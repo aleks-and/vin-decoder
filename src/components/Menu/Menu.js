@@ -6,10 +6,10 @@ import routes from '../../constants/routes';
 const Menu = () => (
     <ul>
         <li>
-            <NavLink to={routes.MAIN} activeClassName='active' exact>Home</NavLink>
+            <NavLink to={routes.MAIN} activeClassName="active" exact>Home</NavLink>
         </li>
         <li>
-            <NavLink to={routes.VARIABLES} activeClassName='active'>Variables</NavLink>
+            <NavLink to={routes.VARIABLES} activeClassName="active">Variables</NavLink>
         </li>
     </ul>
 );

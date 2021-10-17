@@ -12,40 +12,47 @@ import routes from './constants/routes';
 
 export const IsVariablesLoadedContext = React.createContext(null);
 export const VariablesContext = React.createContext(null);
+export const LastSearchResultsContext = React.createContext(null);
 
 
 const App = () => {
     const [isVariablesLoaded, setIsVariablesLoaded] = useState(false);
     const [variables, setVariables] = useState([]);
+    const [lastSearchResults, setLastSearchResults] = useState([]);
 
     return (
         <>
             <ScrollToTop />
-            <VariablesContext.Provider value={{
-                variables,
-                setVariables
+            <LastSearchResultsContext.Provider value={{
+                lastSearchResults,
+                setLastSearchResults
             }}>
-                <IsVariablesLoadedContext.Provider value={{
-                    isVariablesLoaded,
-                    setIsVariablesLoaded
+                <VariablesContext.Provider value={{
+                    variables,
+                    setVariables
                 }}>
-                    <Header />
-                    <Switch>
-                        <Route path={routes.MAIN} exact>
-                            <Home />
-                        </Route>
-                        <Route path={routes.VARIABLES} exact>
-                            <Variables />
-                        </Route>
-                        <Route path={routes.VARIABLE} exact>
-                            <Variable />
-                        </Route>
-                        <Route path='*'>
-                            <NotFound />
-                        </Route>
-                    </Switch>
-                </IsVariablesLoadedContext.Provider>
-            </VariablesContext.Provider>
+                    <IsVariablesLoadedContext.Provider value={{
+                        isVariablesLoaded,
+                        setIsVariablesLoaded
+                    }}>
+                        <Header />
+                        <Switch>
+                            <Route path={routes.MAIN} exact>
+                                <Home />
+                            </Route>
+                            <Route path={routes.VARIABLES} exact>
+                                <Variables />
+                            </Route>
+                            <Route path={routes.VARIABLE} exact>
+                                <Variable />
+                            </Route>
+                            <Route path='*'>
+                                <NotFound />
+                            </Route>
+                        </Switch>
+                    </IsVariablesLoadedContext.Provider>
+                </VariablesContext.Provider>
+            </LastSearchResultsContext.Provider>
         </>
     )
 };

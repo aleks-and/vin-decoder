@@ -3,7 +3,7 @@ import './Header.scss';
 
 
 const Header = () => (
-    <header className='header'>
+    <header className="header">
         <Menu />
     </header>
 );

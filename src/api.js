@@ -1,14 +1,18 @@
-const apiUrls = {
-    BASE: 'https://vpic.nhtsa.dot.gov/api',
-    GET_VARIABLES: '/vehicles/getvehiclevariablelist?format=json'
-};
+const BASE_URL = 'https://vpic.nhtsa.dot.gov/api';
 
-export const decodeVin = () => {
+export const decodeVin = id => {
+    return fetch(`${BASE_URL}/vehicles/decodevin/${id}?format=json`)
+        .then( response => {
+            if ( !response.ok ) {
+                throw new Error(response.statusText);
+            }
 
+            return response.json();
+        })
 };
 
 export const getVinVariables = () => {
-    return fetch(`${apiUrls.BASE}${apiUrls.GET_VARIABLES}`)
+    return fetch(`${BASE_URL}/vehicles/getvehiclevariablelist?format=json`)
         .then( response => {
             if ( !response.ok ) {
                 throw new Error(response.statusText);
