@@ -2,6 +2,7 @@ import { useContext } from 'react';
 
 import { decodeVin } from '../../api';
 import { isInputValid } from './tools';
+import './SearchForm.scss';
 
 import { LastSearchResultsContext } from '../../App';
 
@@ -73,25 +74,29 @@ const SearchForm = ({
     };
 
     return (
-        <>
-            <h2>Search</h2>
-            <form onSubmit={event => onSubmit(event)}>
+        <div className="search-form">
+            <h2 className="search-form__title">Search</h2>
+            <form className="search-form__form" onSubmit={event => onSubmit(event)}>
                 <input
                     value={searchInput.value}
                     onChange={onChange}
                     type="text"
                     placeholder="Enter VIN to decode"
                     maxLength="17"
+                    className="search-form__input"
                 />
                 <button
                     type="submit"
                     disabled={isDecoding}
+                    className="search-form__button"
                 >
                     {isDecoding ? 'Decoding...' : 'Decode'}
                 </button>
             </form>
-            {!searchInput.isValid && <span>17 characters (A-Z & 0-9)</span>}
-        </>
+            {!searchInput.isValid && (
+                <span className="search-form__error">17 characters (A-Z & 0-9)</span>
+            )}
+        </div>
     )
 };
 

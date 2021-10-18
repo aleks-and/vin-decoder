@@ -1,3 +1,15 @@
+@import "../../styles/variables";
+
 .header {
-  background: #61dafb;
+    padding: 0 10px;
+    background: $color-accent;
+
+    &__inner {
+        display: flex;
+        align-items: stretch;
+        height: 60px;
+        width: 100%;
+        max-width: $breakpoint-xl;
+        margin: 0 auto;
+    }
 }

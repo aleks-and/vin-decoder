@@ -1,0 +1,10 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.variables {
+    &__title {
+        font-size: $font-size-h1;
+    }
+}
+
+@include variable-list;

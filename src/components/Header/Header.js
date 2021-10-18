@@ -4,7 +4,9 @@ import './Header.scss';
 
 const Header = () => (
     <header className="header">
-        <Menu />
+        <div className="header__inner">
+            <Menu />
+        </div>
     </header>
 );
 

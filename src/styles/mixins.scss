@@ -1,0 +1,15 @@
+@mixin variable-list {
+    .variable-list {
+        &__title {
+            font-size: $font-size-h2;
+        }
+
+        &__title-link {
+            color: $color-text-base;
+        }
+
+        &__description {
+            word-break: break-word;
+        }
+    }
+}

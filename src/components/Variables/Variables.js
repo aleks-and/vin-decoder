@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { getVinVariables } from '../../api';
 import prepareHTML from '../../utils/prepare.HTML';
+import './Variables.scss';
 
 import { IsVariablesLoadedContext, VariablesContext } from '../../App';
 
@@ -42,47 +43,63 @@ const Variables = () => {
 
     if ( isLoading ) {
         return (
-            <>
-                <h1>Variable list</h1>
-                <p>Loading...</p>
-            </>
+            <main className="main">
+                <div className="main__inner">
+                    <div className="variables">
+                        <h1 className="variables__title">Variable list</h1>
+                        <p>Loading...</p>
+                    </div>
+                </div>
+            </main>
         );
     }
 
     if ( isError ) {
         return (
-            <>
-                <h1>Variable list</h1>
-                <p>Something went wrong. Please try again later.</p>
-            </>
+            <main className="main">
+                <div className="main__inner">
+                    <div className="variables">
+                        <h1 className="variables__title">Variable list</h1>
+                        <p>Something went wrong. Please try again later.</p>
+                    </div>
+                </div>
+            </main>
         );
     }
 
     if ( variables.length === 0 ) {
         return (
-            <>
-                <h1>Variable list</h1>
-                <p>The variable list is empty.</p>
-            </>
+            <main className="main">
+                <div className="main__inner">
+                    <div className="variables">
+                        <h1 className="variables__title">Variable list</h1>
+                        <p>The variable list is empty.</p>
+                    </div>
+                </div>
+            </main>
         );
     }
 
     return (
-        <>
-            <h1>Variable list</h1>
-            <dl>
-                {variables.map(({ID: id, Name: name, Description: description}) => (
-                    <React.Fragment key={id}>
-                        <dt>
-                            <Link to={`/variables/${id}`}>
-                                {name}
-                            </Link>
-                        </dt>
-                        <dd dangerouslySetInnerHTML={prepareHTML(description)} />
-                    </React.Fragment>
-                ))}
-            </dl>
-        </>
+        <main className="main">
+            <div className="main__inner">
+                <div className="variables">
+                    <h1 className="variables__title">Variable list</h1>
+                    <dl className="variable-list">
+                        {variables.map(({ID: id, Name: name, Description: description}) => (
+                            <React.Fragment key={id}>
+                                <dt className="variable-list__title">
+                                    <Link className="variable-list__title-link" to={`/variables/${id}`}>
+                                        {name}
+                                    </Link>
+                                </dt>
+                                <dd className="variable-list__description" dangerouslySetInnerHTML={prepareHTML(description)} />
+                            </React.Fragment>
+                        ))}
+                    </dl>
+                </div>
+            </div>
+        </main>
     );
 };
 

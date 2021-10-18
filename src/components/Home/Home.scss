@@ -1,0 +1,48 @@
+@import "../../styles/variables";
+
+.main {
+    padding: 0 10px;
+
+    &__inner {
+        width: 100%;
+        max-width: $breakpoint-xl;
+        margin: 0 auto;
+    }
+}
+
+.vin-decoder {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        'title'
+        'search-form'
+        'last-search'
+        'search-result';
+    gap: 20px;
+
+    &__title {
+        grid-area: title;
+        font-size: $font-size-h1;
+    }
+
+    &__search-form {
+        grid-area: search-form;
+    }
+
+    &__last-search {
+        grid-area: last-search;
+    }
+
+    &__search-result {
+        grid-area: search-result;
+    }
+
+    @media ( min-width: $breakpoint-lg ) {
+        grid-template-columns: auto 300px;
+        grid-template-areas:
+        'title title'
+        'search-form last-search'
+        'search-result search-result';
+        gap: 20px 40px;
+    }
+}

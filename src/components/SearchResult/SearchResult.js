@@ -1,58 +1,65 @@
+import './SearchResult.scss';
+
+
 const SearchResult = ( {isDecoding, decodedVinData} ) => {
     const {data, message, isLoaded, isError} = decodedVinData;
 
     if ( isDecoding ) {
         return (
-            <>
-                <h2>Decoded VIN data</h2>
+            <div className="search-result">
+                <h2 className="search-result__title">Decoded VIN data</h2>
                 <p>Decoding...</p>
-            </>
+            </div>
         );
     }
 
     if ( isError ) {
         return (
-            <>
-                <h2>Decoded VIN data</h2>
+            <div className="search-result">
+                <h2 className="search-result__title">Decoded VIN data</h2>
                 <p>Something went wrong. Please try again later.</p>
-            </>
+            </div>
         );
     }
 
     if ( !isLoaded ) {
-        return <h2>Decoded VIN data</h2>;
+        return (
+            <div className="search-result">
+                <h2 className="search-result__title">Decoded VIN data</h2>
+            </div>
+        );
     }
 
     if ( data.length === 0 ) {
         return (
-            <>
-                <h2>Decoded VIN data</h2>
+            <div className="search-result">
+                <h2 className="search-result__title">Decoded VIN data</h2>
                 <p>No data for this VIN</p>
-            </>
+            </div>
         );
     }
 
     return (
-        <>
-            <h2>Decoded VIN data</h2>
+        <div className="search-result">
+            <h2 className="search-result__title">Decoded VIN data</h2>
             <p>{message}</p>
-            <table>
+            <table className="result-table">
                 <thead>
-                    <tr>
-                        <th>Variable name</th>
-                        <th>Variable description</th>
+                    <tr className="result-table__header-row">
+                        <th className="result-table__header-cell">Variable name</th>
+                        <th className="result-table__header-cell">Variable description</th>
                     </tr>
                 </thead>
                 <tbody>
                     {data.map(({Value: description, Variable: name, VariableId: id}) => (
-                        <tr key={id}>
-                            <td>{name}</td>
-                            <td>{description}</td>
+                        <tr key={id} className="result-table__row">
+                            <td className="result-table__cell">{name}</td>
+                            <td className="result-table__cell">{description}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-        </>
+        </div>
     );
 };
 

@@ -1,0 +1,56 @@
+@import "../../styles/variables";
+
+.search-form {
+    &__title {
+        font-size: $font-size-h2;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__input,
+    &__button {
+        height: $input-height;
+        font-size: $font-size-base;
+        border: 1px solid $color-accent;
+    }
+
+    &__input {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    &__button {
+        padding: 0 26px;
+        color: $color-secondary;
+        background: $color-accent;
+        cursor: pointer;
+
+        &[disabled] {
+            background: $color-primary;
+            border: 1px solid $color-primary;
+        }
+    }
+
+    &__error {
+        color: $color-error;
+    }
+
+    @media ( min-width: $breakpoint-sm ) {
+        &__form {
+            flex-direction: row;
+        }
+
+        &__input {
+            flex: 1 1 auto;
+        }
+
+        &__button {
+            width: max-content;
+            flex: 0 0 auto;
+        }
+    }
+}

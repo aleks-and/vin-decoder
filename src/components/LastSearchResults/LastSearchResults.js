@@ -1,5 +1,7 @@
 import { useContext } from 'react';
 
+import './LastSearchResults.scss';
+
 import { LastSearchResultsContext } from '../../App';
 
 
@@ -33,24 +35,32 @@ const LastSearchResults = ({
 
     if ( lastSearchResults.length === 0 ) {
         return (
-            <>
-                <h2>Last search results</h2>
+            <div className="last-search">
+                <h2 className="last-search__title">Last search results</h2>
                 <p>No search performed</p>
-            </>
+            </div>
         );
     }
 
     return (
-        <>
-            <h2>Last search results</h2>
-            <ul>
-                {lastSearchResults.map(({code}, index) => (
-                    <li key={index} onClick={() => onClick(index)}>
-                        {code}
-                    </li>
-                ))}
+        <div className="last-search">
+            <h2 className="last-search__title">Last search results</h2>
+            <ul className="last-search__list">
+                {lastSearchResults.map(({code}, index) => {
+                    const className = `last-search__list-item${decodedVinData.code === code ? ' last-search__list-item--active' : ''}`;
+
+                    return (
+                        <li
+                            className={className}
+                            key={index}
+                            onClick={() => onClick(index)}
+                        >
+                            {code}
+                        </li>
+                    )
+                })}
             </ul>
-        </>
+        </div>
     );
 };
 

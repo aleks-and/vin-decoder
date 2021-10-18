@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { getVinVariables } from '../../api';
 import prepareHTML from '../../utils/prepare.HTML';
 import routes from '../../constants/routes';
+import './Variable.scss';
 
 import { IsVariablesLoadedContext, VariablesContext } from '../../App';
 
@@ -50,42 +51,58 @@ const Variable = () => {
 
     if ( isLoading ) {
         return (
-            <>
-                <h1>Variable description</h1>
-                <p>Loading...</p>
-            </>
+            <main className="main">
+                <div className="main__inner">
+                    <div className="variable">
+                        <h1 className="variable__title">Variable description</h1>
+                        <p>Loading...</p>
+                    </div>
+                </div>
+            </main>
         );
     }
 
     if ( isError ) {
         return (
-            <>
-                <h1>Variable description</h1>
-                <p>Something went wrong. Please try again later.</p>
-            </>
+            <main className="main">
+                <div className="main__inner">
+                    <div className="variable">
+                        <h1 className="variable__title">Variable description</h1>
+                        <p>Something went wrong. Please try again later.</p>
+                    </div>
+                </div>
+            </main>
         );
     }
 
     if ( !variable ) {
         return (
-            <>
-                <h1>Variable description</h1>
-                <p>Variable not found</p>
-            </>
+            <main className="main">
+                <div className="main__inner">
+                    <div className="variable">
+                        <h1 className="variable__title">Variable description</h1>
+                        <p>Variable not found</p>
+                    </div>
+                </div>
+            </main>
         );
     }
 
     return (
-        <>
-            <h1>Variable description</h1>
-            <dl>
-                <dt>{variable.Name}</dt>
-                <dd dangerouslySetInnerHTML={prepareHTML(variable.Description)} />
-            </dl>
-            <p>
-                <Link to={routes.VARIABLES}>Back to list</Link>
-            </p>
-        </>
+        <main className="main">
+            <div className="main__inner">
+                <div className="variable">
+                    <h1 className="variable__title">Variable description</h1>
+                    <dl className="variable-list">
+                        <dt className="variable-list__title">{variable.Name}</dt>
+                        <dd className="variable-list__description" dangerouslySetInnerHTML={prepareHTML(variable.Description)} />
+                    </dl>
+                    <p>
+                        <Link to={routes.VARIABLES}>Back to list</Link>
+                    </p>
+                </div>
+            </div>
+        </main>
     );
 };
 

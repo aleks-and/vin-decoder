@@ -1,0 +1,36 @@
+@import "../../styles/variables";
+
+.search-result {
+    padding: 0 0 20px;
+    font-size: 0.9rem;
+
+    &__title {
+        font-size: $font-size-h2;
+    }
+
+    @media ( min-width: $breakpoint-sm ) {
+        font-size: 1rem;
+    }
+}
+
+.result-table {
+    &__header-cell,
+    &__cell {
+        vertical-align: top;
+        padding: 4px 8px;
+    }
+
+    &__header-cell {
+        text-align: left;
+
+        &:first-child {
+            width: 30%;
+        }
+    }
+
+    &__row {
+        &:nth-child(odd) {
+            background: $color-primary;
+        }
+    }
+}

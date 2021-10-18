@@ -1,15 +1,29 @@
 import { NavLink } from 'react-router-dom';
 
 import routes from '../../constants/routes';
+import './Menu.scss';
 
 
 const Menu = () => (
-    <ul>
-        <li>
-            <NavLink to={routes.MAIN} activeClassName="active" exact>Home</NavLink>
+    <ul className="menu">
+        <li className="menu__item">
+            <NavLink
+                to={routes.MAIN}
+                className="menu__item-link"
+                activeClassName="menu__item-link--active"
+                exact
+            >
+                Home
+            </NavLink>
         </li>
-        <li>
-            <NavLink to={routes.VARIABLES} activeClassName="active">Variables</NavLink>
+        <li className="menu__item">
+            <NavLink
+                to={routes.VARIABLES}
+                className="menu__item-link"
+                activeClassName="menu__item-link--active"
+            >
+                Variables
+            </NavLink>
         </li>
     </ul>
 );
