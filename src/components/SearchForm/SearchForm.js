@@ -41,7 +41,7 @@ const SearchForm = ({
 
         try {
             const {Results: data, Message: message} = await decodeVin(searchInput.value);
-            const filteredData = data.filter(( {Value: description} ) => description !== null);
+            const filteredData = data.filter(( {Value: description} ) => description !== null && description !== '');
 
             setDecodedVinData({
                 isError: false,
